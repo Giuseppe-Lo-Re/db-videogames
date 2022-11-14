@@ -3,12 +3,12 @@
 --1- Selezionare tutte le software house americane (3)
 --select * 
 --from software_houses
---where country like 'United States';
+--where country = 'United States';
 
 --2- Selezionare tutti i giocatori della città di 'Rogahnland' (2)
 --select * 
 --from players
---where city like 'Rogahnland';
+--where city = 'Rogahnland';
 
 --3- Selezionare tutti i giocatori il cui nome finisce per "a" (220)
 --select * 
