@@ -165,8 +165,31 @@ ON videogames.software_house_id = software_houses.id
 
 --6- Selezionare categorie e classificazioni PEGI dei videogiochi che hanno ricevuto recensioni da 4 e 5 stelle, mostrandole una sola volta (3363)
 
+SELECT DISTINCT videogames.name, pegi_labels.name, categories.name
+FROM videogames
+INNER JOIN category_videogame
+ON videogames.id = category_videogame.videogame_id
+INNER JOIN categories
+ON category_videogame.category_id = categories.id
+INNER JOIN pegi_label_videogame
+ON videogames.id = pegi_label_videogame.videogame_id
+INNER JOIN pegi_labels
+ON pegi_label_videogame.pegi_label_id = pegi_labels.id
+INNER JOIN reviews
+ON videogames.id = reviews.videogame_id
+WHERE reviews.rating >= 4
 
 --7- Selezionare quali giochi erano presenti nei tornei nei quali hanno partecipato i giocatori il cui nome inizia per 'S' (474)
+
+SELECT DISTINCT videogames.id, videogames.name
+FROM players
+INNER JOIN player_tournament
+ON players.id = player_tournament.player_id
+INNER JOIN tournament_videogame
+ON tournament_videogame.tournament_id = player_tournament.tournament_id
+INNER JOIN videogames
+ON videogames.id = tournament_videogame.videogame_id
+WHERE players.name like 'S%'
 
 --8- Selezionare le città in cui è stato giocato il gioco dell'anno del 2018 (36)
 
