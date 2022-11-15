@@ -26,7 +26,7 @@ WHERE player_id = '800';
 
 --5- Contare quanti tornei ci sono stati nell'anno 2015 (9)
 
-SELECT *
+SELECT COUNT(*) as tournaments_number
 FROM tournaments
 WHERE year = '2015';
 
@@ -34,7 +34,7 @@ WHERE year = '2015';
 
 SELECT *
 FROM awards
-WHERE description LIKE '%facere%';
+WHERE description LIKE '% facere %';
 
 --7- Selezionare tutti i videogame che hanno la categoria 2 (FPS) o 6 (RPG), mostrandoli una sola volta (del videogioco vogliamo solo l'ID) (287)
 
@@ -53,7 +53,7 @@ WHERE rating >= 2 AND rating <= 4;
 
 SELECT *
 FROM videogames
-WHERE DATEPART(year, release_date) = 2020;
+WHERE DATEPART(year, release_date) = 2020; 
 
 --10- Selezionare gli id dei videogame che hanno ricevuto almeno una recensione da stelle, mostrandoli una sola volta (443)
 
@@ -113,7 +113,7 @@ GROUP BY device_id;
 SELECT videogame_id, AVG(rating) as avg_rating
 FROM reviews
 GROUP BY videogame_id
-ORDER BY avg_rating ASC;
+ORDER BY avg_rating DESC;
 
 
 --QUERY CON JOIN
